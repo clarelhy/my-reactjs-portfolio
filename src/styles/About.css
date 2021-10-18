@@ -1,0 +1,47 @@
+#about {
+  background-color: var(--primary);
+  background-image: linear-gradient(
+    135deg,
+    var(--primary) 0%,
+    var(--secondary) 100%
+  );
+  color: var(--off-white);
+  padding-bottom: 10%;
+  min-height: 104vh;
+}
+
+.image-div {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.image {
+  width: 35vh;
+  padding-bottom: 2.5%;
+}
+
+.experience {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  justify-content: center;
+  flex-direction: start;
+}
+
+.info {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.a-link {
+  color: var(--off-white);
+}
+
+.a-link:hover {
+  color: var(--light-blue) !important;
+}

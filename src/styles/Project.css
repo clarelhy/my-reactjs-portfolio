@@ -1,0 +1,13 @@
+.card-div {
+  width: 33vh;
+  margin: 5%;
+}
+
+.card-text {
+  color: var(--primary);
+}
+
+.card-text-each {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}

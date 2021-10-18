@@ -1,0 +1,19 @@
+#contact {
+  background-color: var(--off-white);
+  color: var(--primary);
+  padding-bottom: 10%;
+  min-height: 100vh;
+}
+
+.fa-icon {
+  font-size: 5vh;
+  color: var(--primary);
+}
+
+.a-link-contact {
+  color: var(--primary);
+}
+
+.a-link-contact:hover {
+  color: var(--light-blue) !important;
+}

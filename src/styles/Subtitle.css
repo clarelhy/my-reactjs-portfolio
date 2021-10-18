@@ -1,0 +1,9 @@
+.section-subtitle {
+  padding-top: 1%;
+  padding-bottom: 2%;
+  font-size: 3.5vh;
+  text-align: left;
+  border-bottom: 2px solid;
+  border-image: linear-gradient(to right, var(--accent) 0%, transparent 40%) 50%
+    1;
+}

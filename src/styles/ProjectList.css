@@ -1,0 +1,25 @@
+#project-list {
+  background-color: var(--primary);
+  background-image: linear-gradient(
+    135deg,
+    var(--primary) 0%,
+    var(--secondary) 100%
+  );
+  color: var(--off-white);
+  padding-bottom: 10%;
+  min-height: 104vh;
+}
+
+.project-image-div {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-image {
+  width: 400px;
+  height: auto;
+  padding-bottom: 2.5%;
+}

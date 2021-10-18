@@ -1,0 +1,44 @@
+:root {
+  --primary: #192d50;
+  --secondary: #4f6073;
+  --off-white: #f7f6f7ec;
+  --light-blue: #6097ce;
+  --accent: #5a6988;
+}
+
+#home {
+  min-height: 104vh;
+  height: 104vh;
+  display: flex;
+  align-items: center;
+  border-bottom: 0;
+  background: var(--off-white);
+  font-weight: 400;
+  color: var(--primary);
+  padding: 0 5.6rem;
+  margin-bottom: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+}
+
+.title {
+  font-size: 5vh;
+  font-weight: 700;
+  margin-bottom: 4vh;
+  text-align: left;
+}
+
+.title-name-label-div {
+  border-bottom: 5px solid var(--accent);
+  display: inline-block;
+}
+
+.title-name-label {
+  text-transform: uppercase;
+  background-image: linear-gradient(135deg, var(--secondary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
