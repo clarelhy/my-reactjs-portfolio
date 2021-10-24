@@ -14,7 +14,8 @@ export const Project = ({ project }) => {
       <Card.Body>
         <Card.Title className="card-text">{project.name}</Card.Title>
         <Card.Header className="mb-2 text-muted" style={{ padding: 0 }}>
-          {project.customer}, {project.yearStart} - {project.yearEnd}
+          {project.customer}, {project.yearStart} -{" "}
+          {project.yearEnd ? project.yearEnd : "Present"}
         </Card.Header>
         <Card.Subtitle className="card-text">
           <span className="card-text-each">{project.devRole} Developer</span>

@@ -4,6 +4,7 @@ import { GetFooter } from "./GetFooter";
 import { GetProjects } from "./GetProjects";
 import { GetTechStack } from "./GetTechStack";
 import { GetExperience } from "./GetExperience";
+import { SendEmail } from "./SendEmail";
 
 export {
   GetAbout,
@@ -12,4 +13,5 @@ export {
   GetProjects,
   GetTechStack,
   GetExperience,
+  SendEmail,
 };

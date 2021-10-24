@@ -1,6 +1,7 @@
 .card-div {
   width: 33vh;
   margin: 5%;
+  height: 17vh;
 }
 
 .card-text {
@@ -10,4 +11,9 @@
 .card-text-each {
   margin-bottom: 1rem;
   margin-top: 1rem;
+}
+
+/* Overwrite Card CSS to reduce padding */
+.card-body {
+  padding: 0.5rem 1rem;
 }

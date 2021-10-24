@@ -5,7 +5,7 @@
  */
 
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Image } from "react-bootstrap/";
+import { Container, Row, Col, Carousel } from "react-bootstrap/";
 import { GetProjects } from "../services/";
 import { Title, Project } from "../components";
 import Fade from "react-reveal/Fade";
@@ -15,50 +15,106 @@ import { faArrowAltCircleDown } from "@fortawesome/free-regular-svg-icons";
 import "../styles/ProjectList.css";
 
 export const ProjectList = () => {
-  const [projectList, setProjectList] = useState([]);
+  const cardsPerPage = 9;
+  const [projectsByPage, setProjectsByPage] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
 
   useEffect(() => {
-    GetProjects().then((response) => setProjectList(response.data));
+    GetProjects().then((response) => {
+      const data = response.data || [];
+      const sortedData = data.sort(
+        (a, b) => Number(b.yearStart) - Number(a.yearStart)
+      );
+      const pageCount = Math.ceil(sortedData.length / cardsPerPage);
+
+      let projectArray = [];
+      for (
+        let currentPageCount = 1;
+        currentPageCount - 1 < pageCount;
+        currentPageCount++
+      ) {
+        // multiply cardsPerPage by currentPageCount - 1 to increment as each page's array is populated
+        // i.e. page 1 should have key < 9, page 2 should have key > 9 && < 18... etc
+        // page 1 will be smaller than (currentPageCount = 1 * 9), bigger than (currentPageCount = 0 * 9): 0 < x >= 9
+        // page 2 will be smaller than (currentPageCount = 2 * 9), bigger than (currentPageCount = 1 * 9): 9 < x >= 18
+        let perPage = data.filter(
+          (item, key) =>
+            key < cardsPerPage * currentPageCount &&
+            key >= cardsPerPage * (currentPageCount - 1)
+        );
+
+        // this will be pushed into projectArray at index 0 (for page 1), index 1 (for page 2) etc
+        // i.e. [ [ {}, {}... ], [ {}, {}... ]... ]
+        projectArray.push(perPage);
+      }
+      setProjectsByPage(projectArray);
+    });
   }, []);
 
-  return (
-    <section id="project-list" className="jumbotron">
-      <Container>
-        <Fade bottom duration={1000} delay={300} distance="30px">
-          <Title title="Projects" />
-        </Fade>
+  const handleSelect = (selectedPage, e) => {
+    setCurrentPage(selectedPage);
+  };
 
-        {/* Project List */}
-        <div class="container">
-          <div class="row hidden-md-up">
-            {projectList.map((project, key) => {
-              return (
-                <div class="col-md-4" key={key}>
-                  <div style={{ display: "grid" }}>
-                    <Project project={project} />
+  return (
+    <section
+      id="project-list"
+      className="jumbotron d-flex align-items-center flex-column"
+    >
+      {/* Project List */}
+      <Container fluid className="content-container main-margin-top">
+        <Fade bottom duration={1000} delay={300} distance="30px">
+          <Title title="What I've Done" />
+        </Fade>
+        <Carousel
+          className="carousel-container"
+          activeIndex={currentPage}
+          interval={null}
+          onSelect={handleSelect}
+        >
+          {projectsByPage.map((page, pageIndex) => {
+            return (
+              <Carousel.Item key={pageIndex}>
+                <div className="container">
+                  <div className="row hidden-md-up">
+                    {page.map((project, key) => {
+                      return key < cardsPerPage ? (
+                        <div className="col-md-4" key={key}>
+                          <div style={{ display: "grid" }}>
+                            <Fade
+                              bottom
+                              duration={1000}
+                              delay={150 * key}
+                              distance="30px"
+                            >
+                              <Project project={project} />
+                            </Fade>
+                          </div>
+                        </div>
+                      ) : (
+                        <></>
+                      );
+                    })}
                   </div>
                 </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* CTA to Contact */}
-        <Fade bottom duration={1000} delay={600} distance="30px">
-          <Row>
-            <Col style={{ textAlign: "center" }}>
-              <p className="cta">
-                <span className="cta-btn cta-btn--about">
-                  <Link to="contact" smooth duration={500}>
-                    {"Contact Me"}{" "}
-                    <FontAwesomeIcon icon={faArrowAltCircleDown} />
-                  </Link>
-                </span>
-              </p>
-            </Col>
-          </Row>
-        </Fade>
+              </Carousel.Item>
+            );
+          })}
+        </Carousel>
       </Container>
+      {/* CTA to Contact */}
+      <Fade bottom duration={1000} delay={600} distance="30px">
+        <Row>
+          <Col style={{ textAlign: "center" }}>
+            <p className="cta">
+              <span className="cta-btn cta-btn--about">
+                <Link to="contact" smooth duration={500}>
+                  {"Contact Me"} <FontAwesomeIcon icon={faArrowAltCircleDown} />
+                </Link>
+              </span>
+            </p>
+          </Col>
+        </Row>
+      </Fade>
     </section>
   );
 };

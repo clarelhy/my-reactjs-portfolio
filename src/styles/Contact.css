@@ -1,7 +1,6 @@
 #contact {
   background-color: var(--off-white);
   color: var(--primary);
-  padding-bottom: 10%;
   min-height: 100vh;
 }
 
@@ -16,4 +15,12 @@
 
 .a-link-contact:hover {
   color: var(--light-blue) !important;
+}
+
+.center {
+  justify-content: center;
+}
+
+.content-container {
+  height: 80vh;
 }

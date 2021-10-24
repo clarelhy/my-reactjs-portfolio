@@ -20,6 +20,7 @@ import Fade from "react-reveal/Fade";
 import profilePicture from "../assets/images/AboutMe.jpg";
 import "../styles/About.css";
 import "../styles/CtaButton.css";
+import ResumePdf from "../assets/Resume_October_2021.pdf";
 
 export const About = () => {
   const [isDesktop, setIsDesktop] = useState(false);
@@ -35,18 +36,18 @@ export const About = () => {
       setIsDesktop(false);
     }
 
-    GetAbout().then((res) => {
-      console.log(res);
-      setAboutData(res.data);
-    });
+    GetAbout().then((response) => setAboutData(response.data));
   }, []);
 
   return (
-    <section id="about" className="jumbotron">
-      <Container>
+    <section
+      id="about"
+      className="jumbotron d-flex align-items-center flex-column"
+    >
+      <Container className="content-container main-margin-top">
         {/* Section Header */}
         <Fade bottom duration={1000} delay={300} distance="30px">
-          <Title title="About Me" />
+          <Title title="Who Am I" />
         </Fade>
         <Fade bottom duration={1000} delay={600} distance="30px">
           {/* Profile */}
@@ -88,7 +89,7 @@ export const About = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="cta-btn cta-btn--resume a-link"
-                      href={aboutData.resume}
+                      href={ResumePdf}
                     >
                       Resume
                       <FontAwesomeIcon
@@ -132,31 +133,30 @@ export const About = () => {
             </Col>
           </Row>
         </Fade>
-
-        {/* CTA to Stack and Experience */}
-        <Fade bottom duration={1000} delay={600} distance="30px">
-          <Row>
-            <Col style={{ textAlign: "center" }}>
-              <Fade
-                left={isDesktop}
-                bottom={isMobile}
-                duration={1000}
-                delay={600}
-                distance="30px"
-              >
-                <p className="cta">
-                  <span className="cta-btn cta-btn--about">
-                    <Link to="experience-stack" smooth duration={500}>
-                      {"My Journey"}{" "}
-                      <FontAwesomeIcon icon={faArrowAltCircleDown} />
-                    </Link>
-                  </span>
-                </p>
-              </Fade>
-            </Col>
-          </Row>
-        </Fade>
       </Container>
+      {/* CTA to Stack and Experience */}
+      <Fade bottom duration={1000} delay={600} distance="30px">
+        <Row>
+          <Col style={{ textAlign: "center" }}>
+            <Fade
+              left={isDesktop}
+              bottom={isMobile}
+              duration={1000}
+              delay={600}
+              distance="30px"
+            >
+              <p className="cta">
+                <span className="cta-btn cta-btn--about">
+                  <Link to="experience-stack" smooth duration={500}>
+                    {"My Journey"}{" "}
+                    <FontAwesomeIcon icon={faArrowAltCircleDown} />
+                  </Link>
+                </span>
+              </p>
+            </Fade>
+          </Col>
+        </Row>
+      </Fade>
     </section>
   );
 };

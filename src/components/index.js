@@ -11,6 +11,8 @@ import { Subtitle } from "./Subtitle";
 import { Experience } from "./Experience";
 import { StackExperience } from "./StackExperience";
 import { Project } from "./Project";
+import { ContactForm } from "./ContactForm";
+import { Map } from "./Map";
 
 export {
   About,
@@ -26,4 +28,6 @@ export {
   Experience,
   StackExperience,
   Project,
+  ContactForm,
+  Map,
 };

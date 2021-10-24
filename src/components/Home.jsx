@@ -36,14 +36,13 @@ export const Home = () => {
     const query = ["name", "role"];
 
     // Get About data
-    GetAbout(query).then((res) => {
-      console.log(res);
-      setAboutData(res.data);
+    GetAbout(query).then((response) => {
+      setAboutData(response.data);
     });
   }, []);
 
   return (
-    <section id="home" className="jumbotron">
+    <section id="home" className="jumbotron d-flex align-items-center">
       <Container>
         <Fade
           left={isDesktop}
@@ -62,7 +61,7 @@ export const Home = () => {
           </h1>
           <h5 style={{ marginBottom: 20 }}>
             Out of fun, I created this website portfolio using <br />
-            ReactJS, Bootstrap, NodeJS, Firebase & FontAwesome. <br />
+            ReactJS, Bootstrap, NodeJS & FontAwesome. <br />
             <br />
             Enjoy!
           </h5>

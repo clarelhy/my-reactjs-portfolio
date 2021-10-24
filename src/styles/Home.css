@@ -9,18 +9,8 @@
 #home {
   min-height: 104vh;
   height: 104vh;
-  display: flex;
   align-items: center;
-  border-bottom: 0;
   background: var(--off-white);
-  font-weight: 400;
-  color: var(--primary);
-  padding: 0 5.6rem;
-  margin-bottom: 0;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
   z-index: -1;
 }
 

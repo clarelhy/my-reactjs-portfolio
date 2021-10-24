@@ -6,13 +6,13 @@ import {
   Contact,
   ProjectList,
   StackExperience,
+  Header,
   // Footer,
 } from "./components/";
 function App() {
   return (
     <BrowserRouter>
-      {/* <Header /> */}
-
+      <Header />
       <main>
         <Home />
         <About />
@@ -20,7 +20,6 @@ function App() {
         <ProjectList />
         <Contact />
       </main>
-      {/* <Footer /> */}
     </BrowserRouter>
   );
 }

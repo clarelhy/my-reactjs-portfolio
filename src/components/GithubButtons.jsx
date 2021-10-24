@@ -11,21 +11,21 @@ export const GithubButtons = () => (
   <>
     <GitHubButton
       className="github-button"
-      href="https://github.com/cobidev/gatsby-simplefolio/fork"
+      href="https://github.com/clarelhy/portfolio-reactjs-frontend/fork"
       data-icon="octicon-repo-forked"
       data-size="large"
       data-show-count="true"
-      aria-label="Fork cobidev/gatsby-simplefolio on GitHub"
+      aria-label="Fork clarelhy/portfolio-reactjs-frontend on GitHub"
     >
       Fork
     </GitHubButton>
     <GitHubButton
       className="github-button"
-      href="https://github.com/cobidev/gatsby-simplefolio"
+      href="https://github.com/clarelhy/portfolio-reactjs-frontend"
       data-icon="octicon-star"
       data-size="large"
       data-show-count="true"
-      aria-label="Star cobidev/gatsby-simplefolio on GitHub"
+      aria-label="Star clarelhy/portfolio-reactjs-frontend on GitHub"
     >
       Star
     </GitHubButton>

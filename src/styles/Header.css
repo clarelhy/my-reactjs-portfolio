@@ -4,3 +4,20 @@
   color: white;
   text-align: center;
 }
+
+.sticky-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+.copyright-text {
+  float: right;
+  color: var(--accent);
+}
+
+.pointer-cursor {
+  cursor: pointer;
+}

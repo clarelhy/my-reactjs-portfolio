@@ -8,8 +8,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 import { GetContact } from "../services/";
-import { Title, Subtitle } from "../components";
-import { Container, Row, Col } from "react-bootstrap/";
+import { Title, ContactForm } from "../components";
+import { Container, Row, Col, Stack } from "react-bootstrap/";
 import Fade from "react-reveal/Fade";
 import React, { useState, useEffect } from "react";
 import "../styles/Contact.css";
@@ -18,27 +18,19 @@ export const Contact = () => {
   const [contactData, setContact] = useState({});
 
   useEffect(() => {
-    GetContact().then((response) => {
-      console.log(response);
-      setContact(response.data);
-    });
+    GetContact().then((response) => setContact(response.data));
   }, []);
   return (
-    <section id="contact" className="jumbotron">
-      <Container>
+    <section id="contact" className="jumbotron d-flex align-items-center">
+      <Container className="content-container">
         {/* Section Header */}
         <Fade bottom duration={1000} delay={300} distance="30px">
-          <Title title="Contact Me" />
+          <Title title="Connect With Me" />
         </Fade>
-        <Row>
-          <Col md={12} style={{ justifyContent: "center" }}>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-evenly",
-              }}
-            >
+
+        <Row className="justify-content-md-center my-lg-4">
+          <Col md={1}>
+            <Stack direction="vertical" gap={5}>
               <Fade bottom duration={1000} delay={300} distance="30px">
                 <div>
                   <a
@@ -51,7 +43,6 @@ export const Contact = () => {
                   </a>
                 </div>
               </Fade>
-
               <Fade bottom duration={1000} delay={700} distance="30px">
                 <div>
                   <a
@@ -64,25 +55,28 @@ export const Contact = () => {
                   </a>
                 </div>
               </Fade>
-
               <Fade bottom duration={1000} delay={1100} distance="30px">
                 <div>
                   <a
                     className="a-link-contact"
                     target="_blank"
                     rel="noopener noreferrer"
-                    href={contactData.email}
+                    href={`mailto:${contactData.email}`}
                   >
                     <FontAwesomeIcon icon={faEnvelope} className="fa-icon" />
                   </a>
                 </div>
               </Fade>
-            </div>
+            </Stack>
           </Col>
-        </Row>
-        <Row>
-          <Col md={12} style={{ justifyContent: "center" }}>
-            <Subtitle subtitle="// TO-DO: Add Contact Form" />
+          <Col md={6}>
+            <Stack direction="vertical" gap={5}>
+              <Row className="center">
+                <Col md={12}>
+                  <ContactForm />
+                </Col>
+              </Row>
+            </Stack>
           </Col>
         </Row>
       </Container>

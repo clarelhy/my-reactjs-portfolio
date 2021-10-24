@@ -1,6 +1,9 @@
 #experience-stack {
   background-color: var(--off-white);
   color: var(--primary);
-  padding-bottom: 10%;
   min-height: 104vh;
+}
+
+.content-container {
+  height: 80vh;
 }

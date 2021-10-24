@@ -6,7 +6,6 @@
     var(--secondary) 100%
   );
   color: var(--off-white);
-  padding-bottom: 10%;
   min-height: 104vh;
 }
 
@@ -44,4 +43,8 @@
 
 .a-link:hover {
   color: var(--light-blue) !important;
+}
+
+.main-margin-top {
+  margin-top: 5%;
 }
