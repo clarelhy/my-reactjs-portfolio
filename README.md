@@ -1,8 +1,6 @@
 # My ReactJS Portfolio (Front-end only)
 My personal portfolio webpage using ReactJS and NodeJS for data retrieval.
 
-Future plans to add more UI UX features/adjustments and add a contact form which sends an email to me.
-
 Interfacing with Firebase will also be implemented.
 
 Works with https://github.com/clarelhy/portfolio-nodejs-backend to serve out my personal portfolio webpage.
@@ -22,10 +20,18 @@ In the project directory, you can run:
 ### `npm start`
 
 Runs the app in the development mode.\
-Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
+
+### `npm run start-client`
+
+Builds the app for production and starts NodeJS backend.
+Folder structure should be 
+- Portfolio
+  - portfolio-reactjs-frontend <-- run `npm run start-client` here
+  - portfolio-nodejs-backend
 
 ### `npm test`
 
