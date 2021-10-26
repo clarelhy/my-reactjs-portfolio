@@ -18,25 +18,25 @@ import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-scroll";
 import Fade from "react-reveal/Fade";
 import profilePicture from "../assets/images/AboutMe.jpg";
+import ResumePdf from "../assets/Resume_October_2021.pdf";
 import "../styles/About.css";
 import "../styles/CtaButton.css";
-import ResumePdf from "../assets/Resume_October_2021.pdf";
+import { log } from "../Utility";
+import { useApplicationContext } from "../contexts/ApplicationContext";
+
+const COMPONENT_NAME = "About";
 
 export const About = () => {
-  const [isDesktop, setIsDesktop] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const applicationContext = useApplicationContext();
+  const { isMobile, isDesktop, isTablet } = applicationContext;
+
   const [aboutData, setAboutData] = useState({});
 
   useEffect(() => {
-    if (window.innerWidth > 769) {
-      setIsDesktop(true);
-      setIsMobile(false);
-    } else {
-      setIsMobile(true);
-      setIsDesktop(false);
-    }
-
-    GetAbout().then((response) => setAboutData(response.data));
+    GetAbout([]).then((response) => {
+      log(COMPONENT_NAME, "GetAbout Response", response);
+      setAboutData(response.data);
+    });
   }, []);
 
   return (
@@ -44,18 +44,52 @@ export const About = () => {
       id="about"
       className="jumbotron d-flex align-items-center flex-column"
     >
-      <Container className="content-container main-margin-top">
+      <Container
+        className={
+          isMobile || isTablet
+            ? "mobile-margin-top"
+            : "content-container main-margin-top"
+        }
+      >
         {/* Section Header */}
-        <Fade bottom duration={1000} delay={300} distance="30px">
+        <Fade
+          bottom={isMobile}
+          left={isDesktop}
+          duration={1000}
+          delay={300}
+          distance="30px"
+        >
           <Title title="Who Am I" />
         </Fade>
-        <Fade bottom duration={1000} delay={600} distance="30px">
+        <Fade
+          bottom={isMobile}
+          left={isDesktop}
+          duration={1000}
+          delay={600}
+          distance="30px"
+        >
           {/* Profile */}
           <Row>
             <Col md={5}>
-              <Fade bottom duration={1000} delay={800} distance="30px">
+              <Fade
+                bottom={isMobile}
+                left={isDesktop}
+                duration={1000}
+                delay={800}
+                distance="30px"
+              >
                 <div className="image-div">
-                  <Image src={profilePicture} className="image" rounded />
+                  <Image
+                    src={profilePicture}
+                    className={
+                      isDesktop
+                        ? "image-desktop"
+                        : isTablet
+                        ? "image-tablet"
+                        : "image-mobile"
+                    }
+                    rounded
+                  />
                 </div>
               </Fade>
             </Col>
@@ -83,22 +117,21 @@ export const About = () => {
                     />
                   </a>
                 </p>
-                {aboutData.resume && (
-                  <div style={{ marginBottom: "5%" }}>
-                    <a
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="cta-btn cta-btn--resume a-link"
-                      href={ResumePdf}
-                    >
-                      Resume
-                      <FontAwesomeIcon
-                        style={{ paddingLeft: 5 }}
-                        icon={faExternalLinkAlt}
-                      />
-                    </a>
-                  </div>
-                )}
+
+                <div style={{ marginBottom: "5%" }}>
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="cta-btn cta-btn--resume a-link"
+                    href={ResumePdf}
+                  >
+                    Resume
+                    <FontAwesomeIcon
+                      style={{ paddingLeft: 5 }}
+                      icon={faExternalLinkAlt}
+                    />
+                  </a>
+                </div>
               </div>
               <Row style={{ paddingTop: "1%" }}>
                 <Col md={6}>
@@ -135,7 +168,13 @@ export const About = () => {
         </Fade>
       </Container>
       {/* CTA to Stack and Experience */}
-      <Fade bottom duration={1000} delay={600} distance="30px">
+      <Fade
+        bottom={isMobile}
+        left={isDesktop}
+        duration={1000}
+        delay={600}
+        distance="30px"
+      >
         <Row>
           <Col style={{ textAlign: "center" }}>
             <Fade

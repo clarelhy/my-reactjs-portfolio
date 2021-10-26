@@ -26,7 +26,7 @@
   },
   "scripts": {
     "start-client": "npm run start",
-    "start": "react-scripts build && (cd ../portfolio-nodejs-backend && npm start)",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

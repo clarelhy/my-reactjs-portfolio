@@ -1,5 +1,7 @@
-const url = process.env.REACT_APP_BACKEND_ENDPOINT;
+import { getUrlByEnvironment } from "../Utility";
 
 export const GetFooter = async () => {
-  return await fetch(url + "/footer").then((response) => response.json());
+  return await fetch(getUrlByEnvironment() + "/footer").then((response) =>
+    response.json()
+  );
 };

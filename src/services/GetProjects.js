@@ -1,9 +1,7 @@
-const url = process.env.REACT_APP_BACKEND_ENDPOINT;
+import { getUrlByEnvironment } from "../Utility";
 
 export const GetProjects = async () => {
-  return await fetch(url + "/projects").then((response) => {
-    const responseJson = response.json();
-    console.log("[Service Response] GetProjects", responseJson);
-    return responseJson;
-  });
+  return await fetch(getUrlByEnvironment() + "/projects").then((response) =>
+    response.json()
+  );
 };

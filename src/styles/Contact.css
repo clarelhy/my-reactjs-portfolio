@@ -24,3 +24,12 @@
 .content-container {
   height: 80vh;
 }
+
+.place-content-center {
+  place-content: center;
+}
+
+.margin-vertical-5 {
+  margin-top: 5% !important; /* overwrite grid gutter margin */
+  margin-bottom: 5%;
+}

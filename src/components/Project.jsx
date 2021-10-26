@@ -8,9 +8,18 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import "../styles/Project.css";
 
-export const Project = ({ project }) => {
+export const Project = ({ project, isDesktop, isMobile, isTablet }) => {
   return (
-    <Card id="project" className="card-div">
+    <Card
+      id="project"
+      className={
+        isMobile
+          ? "card-div-mobile"
+          : isTablet
+          ? "card-div-tablet"
+          : "card-div-desktop"
+      }
+    >
       <Card.Body>
         <Card.Title className="card-text">{project.name}</Card.Title>
         <Card.Header className="mb-2 text-muted" style={{ padding: 0 }}>

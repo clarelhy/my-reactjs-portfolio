@@ -13,30 +13,27 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleDown } from "@fortawesome/free-regular-svg-icons";
 import "../styles/Home.css";
 import "../styles/CtaButton.css";
+import { log } from "../Utility";
+import { useApplicationContext } from "../contexts/ApplicationContext";
+
+const COMPONENT_NAME = "Home";
 
 export const Home = () => {
-  const [isDesktop, setIsDesktop] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const applicationContext = useApplicationContext();
+  const { isMobile, isDesktop } = applicationContext;
 
   const [aboutData, setAboutData] = useState({
     name: "Clare",
-    role: "Full-Stack Developer",
+    role: "Full-Stack Software Developer",
   });
 
   useEffect(() => {
-    if (window.innerWidth > 769) {
-      setIsDesktop(true);
-      setIsMobile(false);
-    } else {
-      setIsMobile(true);
-      setIsDesktop(false);
-    }
-
     // Filter fields
     const query = ["name", "role"];
 
     // Get About data
     GetAbout(query).then((response) => {
+      log(COMPONENT_NAME, "GetAbout Response", response);
       setAboutData(response.data);
     });
   }, []);

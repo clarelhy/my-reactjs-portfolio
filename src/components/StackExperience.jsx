@@ -16,33 +16,32 @@ import {
   faCalendar,
   faArrowAltCircleDown,
 } from "@fortawesome/free-regular-svg-icons";
-// import ProgressBar from "react-bootstrap/ProgressBar";
 import "../styles/StackExperience.css";
+import { log } from "../Utility";
+import { useApplicationContext } from "../contexts/ApplicationContext";
+
+const COMPONENT_NAME = "StackExperience";
 
 export const StackExperience = () => {
-  const [isDesktop, setIsDesktop] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const applicationContext = useApplicationContext();
+  const { isMobile, isDesktop, isTablet } = applicationContext;
 
   const [experiences, setExperience] = useState([]);
   const [techStack, setTechStack] = useState([]);
 
   useEffect(() => {
-    if (window.innerWidth > 769) {
-      setIsDesktop(true);
-      setIsMobile(false);
-    } else {
-      setIsMobile(true);
-      setIsDesktop(false);
-    }
-
     GetExperience().then((response) => {
+      log(COMPONENT_NAME, "GetExperience Response", response);
       const experienceList = response.data || [];
       const sortedExperience = experienceList.sort(
         (a, b) => Number(b.yearJoined) - Number(a.yearJoined)
       );
       setExperience(sortedExperience ?? []);
     });
-    GetTechStack().then((response) => setTechStack(response.data));
+    GetTechStack().then((response) => {
+      log(COMPONENT_NAME, "GetTechStack Response", response);
+      setTechStack(response.data);
+    });
   }, []);
 
   return (
@@ -50,20 +49,36 @@ export const StackExperience = () => {
       id="experience-stack"
       className="jumbotron d-flex align-items-center flex-column"
     >
-      <Container className="content-container main-margin-top">
-        <Fade bottom duration={1000} delay={300} distance="30px">
+      <Container
+        className={
+          isMobile || isTablet
+            ? "mobile-margin-top"
+            : "content-container main-margin-top"
+        }
+      >
+        <Fade
+          bottom={isMobile}
+          left={isDesktop}
+          duration={1000}
+          delay={300}
+          distance="30px"
+        >
           <Title title="What I Know" />
         </Fade>
         {/* Tech Skills */}
         <Container className="d-flex flex-row">
           <Row
-            style={{
-              justifyContent: "center",
-              height: "70vh",
-            }}
+            className="flex-center"
+            style={
+              isMobile
+                ? {}
+                : {
+                    height: "70vh",
+                  }
+            }
           >
             {/* Tech Stack */}
-            <Col md={3}>
+            <Col md={isDesktop ? 3 : 6}>
               <Fade
                 left={isDesktop}
                 bottom={isMobile}
@@ -73,7 +88,7 @@ export const StackExperience = () => {
               >
                 <Subtitle subtitle="Tech Stack" />
                 <div className="d-flex flex-row">
-                  <div className="container">
+                  <div className="container" style={{ paddingLeft: 0 }}>
                     <ul className="fa-ul" style={{ marginLeft: 0 }}>
                       {techStack?.map((item, key) => {
                         return (
@@ -96,29 +111,19 @@ export const StackExperience = () => {
                                   {item.yoe} {item.yoe > 1 ? "years" : "year"}
                                 </label>
                               </div>
-                              {/* <div style={{ width: "30%" }}>
-                            <ProgressBar
-                              animated
-                              variant="success"
-                              min={10}
-                              max={100}
-                              now={item.level}
-                              label={`${item.level}%`}
-                            />
-                          </div> */}
                             </div>
                           </li>
                         );
                       })}
                     </ul>
                   </div>
-                  <div className="vr"></div>
+                  {isDesktop || isTablet ? <div className="vr"></div> : <></>}
                 </div>
               </Fade>
             </Col>
 
             {/* Work Experiences */}
-            <Col md={8}>
+            <Col md={isDesktop ? 8 : 6}>
               <Fade
                 left={isDesktop}
                 bottom={isMobile}

@@ -1,7 +1,15 @@
-.card-div {
-  width: 33vh;
+.card-div-desktop {
   margin: 5%;
   height: 17vh;
+}
+
+.card-div-mobile {
+  margin: 5%;
+}
+
+.card-div-tablet {
+  margin: 5%;
+  height: 13vh;
 }
 
 .card-text {

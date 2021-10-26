@@ -13,25 +13,54 @@ import { Container, Row, Col, Stack } from "react-bootstrap/";
 import Fade from "react-reveal/Fade";
 import React, { useState, useEffect } from "react";
 import "../styles/Contact.css";
+import { log } from "../Utility";
+import { useApplicationContext } from "../contexts/ApplicationContext";
+
+const COMPONENT_NAME = "Contact";
 
 export const Contact = () => {
+  const applicationContext = useApplicationContext();
+  const { isMobile, isDesktop, isTablet } = applicationContext;
+
   const [contactData, setContact] = useState({});
 
   useEffect(() => {
-    GetContact().then((response) => setContact(response.data));
+    GetContact().then((response) => {
+      log(COMPONENT_NAME, "GetContact Response", response);
+      setContact(response.data);
+    });
   }, []);
   return (
     <section id="contact" className="jumbotron d-flex align-items-center">
       <Container className="content-container">
         {/* Section Header */}
-        <Fade bottom duration={1000} delay={300} distance="30px">
+        <Fade
+          bottom={isMobile}
+          left={isDesktop}
+          duration={1000}
+          delay={300}
+          distance="30px"
+        >
           <Title title="Connect With Me" />
         </Fade>
 
         <Row className="justify-content-md-center my-lg-4">
-          <Col md={1}>
-            <Stack direction="vertical" gap={5}>
-              <Fade bottom duration={1000} delay={300} distance="30px">
+          <Col
+            md={isTablet ? 2 : 1}
+            className={isMobile ? "margin-vertical-5 border-top-bottom" : ""}
+          >
+            <Stack
+              direction={isMobile ? "horizontal" : "vertical"}
+              gap={5}
+              className="place-content-center"
+            >
+              <Fade
+                bottom={isMobile}
+                left={isDesktop}
+                duration={1000}
+                delay={300}
+                distance="30px"
+              >
                 <div>
                   <a
                     className="a-link-contact"
@@ -43,7 +72,13 @@ export const Contact = () => {
                   </a>
                 </div>
               </Fade>
-              <Fade bottom duration={1000} delay={700} distance="30px">
+              <Fade
+                bottom={isMobile}
+                left={isDesktop}
+                duration={1000}
+                delay={700}
+                distance="30px"
+              >
                 <div>
                   <a
                     className="a-link-contact"
@@ -55,7 +90,13 @@ export const Contact = () => {
                   </a>
                 </div>
               </Fade>
-              <Fade bottom duration={1000} delay={1100} distance="30px">
+              <Fade
+                bottom={isMobile}
+                left={isDesktop}
+                duration={1000}
+                delay={1100}
+                distance="30px"
+              >
                 <div>
                   <a
                     className="a-link-contact"

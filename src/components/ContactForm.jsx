@@ -10,10 +10,6 @@ import React, { useState } from "react";
 import { SendEmail } from "../services/";
 import "../styles/ContactForm.css";
 
-function doSendEmail({ name, email, message }) {
-  console.log(name, email, message);
-  return SendEmail({ name, email, message }).then((response) => response);
-}
 export const ContactForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -31,15 +27,15 @@ export const ContactForm = () => {
     }
     setValidated(true);
 
-    const response = await doSendEmail({ name, email, message });
-    console.log("Send email response", response);
-    if (response.status === "OK") {
-      setFeedbackMessage("Email has been sent!");
-      setEmailSuccess(true);
-    } else {
-      setFeedbackMessage("Failed to send email!", response.message);
-      setEmailSuccess(false);
-    }
+    SendEmail({ name, email, message }).then((response) => {
+      if (response.status === 200) {
+        setFeedbackMessage("Email has been sent!");
+        setEmailSuccess(true);
+      } else {
+        setFeedbackMessage("Failed to send email!", response.message);
+        setEmailSuccess(false);
+      }
+    });
   };
 
   return (

@@ -21,22 +21,12 @@ export const Header = () => {
             <Nav className="me-auto">
               <Nav.Item>
                 <Link
-                  className="nav-link pointer-cursor"
-                  to="home"
-                  smooth
-                  duration={500}
-                >
-                  Home
-                </Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Link
-                  className="nav-link pointer-cursor"
+                  className="nav-link pointer-cursor copyright-text"
                   to="about"
                   smooth
                   duration={500}
                 >
-                  About
+                  Clare <FontAwesomeIcon icon={faCopyright} /> 2021
                 </Link>
               </Nav.Item>
               <Nav.Item>
@@ -70,9 +60,6 @@ export const Header = () => {
                 </Link>
               </Nav.Item>
             </Nav>
-            <span className="copyright-text">
-              Clare Lim <FontAwesomeIcon icon={faCopyright} /> 2021
-            </span>
           </Navbar.Collapse>
         </Container>
       </Navbar>

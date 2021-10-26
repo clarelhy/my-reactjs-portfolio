@@ -1,13 +1,16 @@
 # My ReactJS Portfolio (Front-end only)
+
 My personal portfolio webpage using ReactJS and NodeJS for data retrieval.
 
-Interfacing with Firebase will also be implemented.
+Interfacing with Firebase will also be implemented in future.
 
 Works with https://github.com/clarelhy/portfolio-nodejs-backend to serve out my personal portfolio webpage.
 
-## NodeJS Back-end 
-NodeJS implementation can be pulled from another repository.
+See build version at https://github.com/clarelhy/portfolio-build.
 
+## NodeJS Back-end
+
+NodeJS implementation can be pulled from another repository.
 
 # Getting Started with Create React App
 
@@ -17,21 +20,20 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-### `npm start`
+### `npm start` or `npm run start-client`
 
-Runs the app in the development mode.\
+#### Development
+
+Port defined in `.env` as `PORT`, set to 5000 by default.\
+Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
+
+#### Production
+
+Port defined in `.env` as `REACT_APP_BACKEND_PORT_DEV`, set to 3000 by default, as the backend is also set to 3000.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
-
-### `npm run start-client`
-
-Builds the app for production and starts NodeJS backend.
-Folder structure should be 
-- Portfolio
-  - portfolio-reactjs-frontend <-- run `npm run start-client` here
-  - portfolio-nodejs-backend
 
 ### `npm test`
 
