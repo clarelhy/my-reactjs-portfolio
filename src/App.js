@@ -1,13 +1,7 @@
 import React, { useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
-import {
-  About,
-  Home,
-  Contact,
-  ProjectList,
-  StackExperience,
-  Header,
-} from "./components/";
+import { Header } from "./components/";
+import { About, Home, Contact, ProjectList, StackExperience } from "./scenes";
 import { useApplicationContext } from "./contexts/ApplicationContext";
 import { log } from "./Utility";
 

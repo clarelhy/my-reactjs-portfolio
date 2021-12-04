@@ -22,7 +22,7 @@ export const Experience = ({ experience }) => {
               {experience.yearJoined} - {yearLeft}
             </Badge>
             <Badge style={{ marginLeft: 5 }} bg="dark">
-              {experience.duration}
+              {experience.duration} {experience.duration > 1 ? "years" : "year"}
             </Badge>
           </div>
         ) : (
@@ -31,7 +31,7 @@ export const Experience = ({ experience }) => {
               {experience.yearJoined} - {yearLeft}
             </Badge>
             <Badge style={{ marginLeft: 5 }} bg="dark">
-              {experience.duration}
+              {experience.duration} {experience.duration > 1 ? "years" : "year"}
             </Badge>
           </div>
         )}

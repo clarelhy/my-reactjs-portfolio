@@ -6,8 +6,8 @@
 
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap/";
-import { GetExperience, GetTechStack } from "../services";
-import { Title, Subtitle, Experience } from ".";
+import { GetExperienceData, GetTechStackData } from "../viewmodels";
+import { Title, Subtitle, Experience } from "../components";
 import Fade from "react-reveal/Fade";
 import { Link } from "react-scroll";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -30,17 +30,13 @@ export const StackExperience = () => {
   const [techStack, setTechStack] = useState([]);
 
   useEffect(() => {
-    GetExperience().then((response) => {
-      log(COMPONENT_NAME, "GetExperience Response", response);
-      const experienceList = response.data || [];
-      const sortedExperience = experienceList.sort(
-        (a, b) => Number(b.yearJoined) - Number(a.yearJoined)
-      );
-      setExperience(sortedExperience ?? []);
+    GetExperienceData().then((data) => {
+      log(COMPONENT_NAME, "GetExperienceData Response", data);
+      setExperience(data);
     });
-    GetTechStack().then((response) => {
-      log(COMPONENT_NAME, "GetTechStack Response", response);
-      setTechStack(response.data);
+    GetTechStackData().then((data) => {
+      log(COMPONENT_NAME, "GetTechStackData Response", data);
+      setTechStack(data);
     });
   }, []);
 

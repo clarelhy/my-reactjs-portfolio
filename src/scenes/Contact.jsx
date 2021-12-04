@@ -7,7 +7,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
-import { GetContact } from "../services/";
+import { GetContactData } from "../viewmodels";
 import { Title, ContactForm } from "../components";
 import { Container, Row, Col, Stack } from "react-bootstrap/";
 import Fade from "react-reveal/Fade";
@@ -25,9 +25,9 @@ export const Contact = () => {
   const [contactData, setContact] = useState({});
 
   useEffect(() => {
-    GetContact().then((response) => {
-      log(COMPONENT_NAME, "GetContact Response", response);
-      setContact(response.data);
+    GetContactData().then((data) => {
+      log(COMPONENT_NAME, "GetContactData Response", data);
+      setContact(data);
     });
   }, []);
   return (

@@ -2,6 +2,7 @@
  * GoogleMap.jsx
  * @author Clare Lim <lhy.clare@gmail.com>
  * @file Map component for contact me component
+ * CURRENTLY NOT IN USE
  */
 
 import React from "react";

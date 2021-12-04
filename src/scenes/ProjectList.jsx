@@ -6,7 +6,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Carousel } from "react-bootstrap/";
-import { GetProjects } from "../services/";
+import { GetProjectsData } from "../viewmodels";
 import { Title, Project } from "../components";
 import Fade from "react-reveal/Fade";
 import { Link } from "react-scroll";
@@ -28,17 +28,14 @@ export const ProjectList = () => {
   const [currentPage, setCurrentPage] = useState(0);
 
   useEffect(() => {
-    GetProjects().then((response) => {
-      log(COMPONENT_NAME, "GetProjects Response", response);
-      const data = response.data || [];
-      const sortedData = data.sort(
-        (a, b) => Number(b.yearStart) - Number(a.yearStart)
-      );
+    GetProjectsData().then((data) => {
+      log(COMPONENT_NAME, "GetProjectsData Response", data);
+      data = data.sort((a, b) => Number(b.yearStart) - Number(a.yearStart));
 
       // set state to display when device is desktop
-      setSortedProjects(sortedData);
+      setSortedProjects(data);
 
-      const pageCount = Math.ceil(sortedData.length / cardsPerPage);
+      const pageCount = Math.ceil(data.length / cardsPerPage);
 
       let projectArray = [];
       for (

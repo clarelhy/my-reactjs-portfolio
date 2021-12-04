@@ -7,7 +7,7 @@
 import { Form, Button, Badge } from "react-bootstrap/";
 import Fade from "react-reveal/Fade";
 import React, { useState } from "react";
-import { SendEmail } from "../services/";
+import { TriggerSendEmail } from "../viewmodels";
 import "../styles/ContactForm.css";
 
 export const ContactForm = () => {
@@ -27,12 +27,12 @@ export const ContactForm = () => {
     }
     setValidated(true);
 
-    SendEmail({ name, email, message }).then((response) => {
+    TriggerSendEmail({ name, email, message }).then((response) => {
       if (response.status === 200) {
         setFeedbackMessage("Email has been sent!");
         setEmailSuccess(true);
       } else {
-        setFeedbackMessage("Failed to send email!", response.message);
+        setFeedbackMessage("Failed to send email!");
         setEmailSuccess(false);
       }
     });
@@ -86,7 +86,7 @@ export const ContactForm = () => {
         {emailSuccess === true ? (
           <Badge bg="success">{feedbackMessage ?? ""}</Badge>
         ) : (
-          <Badge bg="error">{feedbackMessage ?? ""}</Badge>
+          <Badge bg="danger">{feedbackMessage ?? ""}</Badge>
         )}
         <Button variant="primary" type="submit" className="float-right">
           Submit

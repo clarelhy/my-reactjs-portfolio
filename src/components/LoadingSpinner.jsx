@@ -8,5 +8,5 @@ import React from "react";
 import Spinner from "react-bootstrap/Spinner";
 
 export const LoadingSpinner = () => {
-  return <Spinner animation="border" variant="light" />;
+  return <Spinner animation="border" variant="dark" />;
 };

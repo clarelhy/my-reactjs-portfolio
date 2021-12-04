@@ -6,7 +6,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Image } from "react-bootstrap/";
-import { GetAbout } from "../services/";
+import { GetAboutData } from "../viewmodels";
 import { Title, Subtitle } from "../components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -33,9 +33,9 @@ export const About = () => {
   const [aboutData, setAboutData] = useState({});
 
   useEffect(() => {
-    GetAbout([]).then((response) => {
-      log(COMPONENT_NAME, "GetAbout Response", response);
-      setAboutData(response.data);
+    GetAboutData().then((data) => {
+      log(COMPONENT_NAME, "GetAboutData Response", data);
+      setAboutData(data);
     });
   }, []);
 
@@ -135,7 +135,7 @@ export const About = () => {
               </div>
               <Row style={{ paddingTop: "1%" }}>
                 <Col md={6}>
-                  <Subtitle subtitle="Personal Interests" />
+                  <Subtitle subtitle="My Interests" />
                   {aboutData.interests?.map((item, key) => {
                     return (
                       <p key={key}>
