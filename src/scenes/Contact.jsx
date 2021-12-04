@@ -112,7 +112,7 @@ export const Contact = () => {
           </Col>
           <Col md={6}>
             <Stack direction="vertical" gap={5}>
-              <Row className="center">
+              <Row>
                 <Col md={12}>
                   <ContactForm />
                 </Col>
