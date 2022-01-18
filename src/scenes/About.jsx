@@ -98,8 +98,7 @@ export const About = () => {
                 <p>{aboutData.education} </p>
                 <p>
                   <span className="label label-default">
-                    {aboutData.yoe} years of industry experience,{" "}
-                    {aboutData.certifications[0]}
+                    {aboutData.yoe} years of industry experience, SCRUM Master
                   </span>
                 </p>
                 <p>
