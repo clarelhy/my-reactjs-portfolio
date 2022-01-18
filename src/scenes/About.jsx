@@ -18,7 +18,7 @@ import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-scroll";
 import Fade from "react-reveal/Fade";
 import profilePicture from "../assets/images/AboutMe.jpg";
-import ResumePdf from "../assets/Resume_October_2021.pdf";
+import ResumePdf from "../assets/Resume_January_2022.pdf";
 import "../styles/About.css";
 import "../styles/CtaButton.css";
 import { log } from "../Utility";
@@ -98,7 +98,8 @@ export const About = () => {
                 <p>{aboutData.education} </p>
                 <p>
                   <span className="label label-default">
-                    {aboutData.yoe} years of industry experience
+                    {aboutData.yoe} years of industry experience,{" "}
+                    {aboutData.certifications[0]}
                   </span>
                 </p>
                 <p>
