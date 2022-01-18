@@ -26,7 +26,7 @@ export const Header = () => {
                   smooth
                   duration={500}
                 >
-                  Clare <FontAwesomeIcon icon={faCopyright} /> 2021
+                  Clare <FontAwesomeIcon icon={faCopyright} /> 2022
                 </Link>
               </Nav.Item>
               <Nav.Item>
