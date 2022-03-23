@@ -18,7 +18,7 @@ import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-scroll";
 import Fade from "react-reveal/Fade";
 import profilePicture from "../assets/images/AboutMe.jpg";
-import ResumePdf from "../assets/Clare_Resume_23March2022.pdf";
+import ResumePdf from "../assets/Clare_Resume.pdf";
 import "../styles/About.css";
 import "../styles/CtaButton.css";
 import { log } from "../Utility";
